@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createrToken, verificarToken } from '../../Middleware/token';
+import { createrToken,  } from '../../middleware/token'; //verificarToken
 import CMS from '../CMS/CMS';
 
 
@@ -14,7 +14,7 @@ class GoraRoute {
   private  routes(): void {
     
         this.router.get('/TokenGora', createrToken);
-        this.router.use('/CMS',verificarToken , CMS);
+        this.router.use('/CMS' , CMS) //verificarToken
     }
 }
 
