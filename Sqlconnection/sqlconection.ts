@@ -3,8 +3,8 @@ import mssql  from 'mssql'
 const config: mssql.config = { 
     server: "localhost",
     database: "Gora",
-    user: "sa",
-    password: "Test123456789*",
+    user: "ze",
+    password: "392122840",
     options: {
         encrypt: true,
         trustServerCertificate: true

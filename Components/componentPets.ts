@@ -45,6 +45,7 @@ export async function selectPets( req: Request, res: Response):Promise<void>{
 	.input('Web', sql.NVarChar(50),req.query.Web)
         .execute('SELECT_ANIMALS')
         pool.close()
+        console.log(Select)
         res.json({result:Select, mesage:"Seleccion"}).status(200) 
     }catch(error){
         console.error('Error en la conexion.',error)
