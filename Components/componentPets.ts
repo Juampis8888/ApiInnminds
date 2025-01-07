@@ -16,8 +16,8 @@ export async function insertPets( req: Request, res: Response):Promise<void>{
         .input('Type',sql.NVarChar(50), req.body.data.Type)
         .input('OldDate',sql.NVarChar(50), req.body.data.OldDate)
         .input('Image', sql.NVarChar(MAX),req.body.data.Images)
-	.input('Image2', sql.NVarChar(MAX),req.body.data.Images2)
-	.input('Web', sql.NVarChar(50),req.body.data.Web)
+	    .input('Image2', sql.NVarChar(MAX),req.body.data.Images2)
+	    .input('Web', sql.NVarChar(50),req.body.data.Web)
         .execute('INSERT_ANIMALS')
         
         pool.close()
