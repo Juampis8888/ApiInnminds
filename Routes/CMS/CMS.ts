@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createrToken } from '../../middleware/token';
+import { createrToken } from '../../Middleware/token';
 import { selectPets, deletePets, UpdatePets, insertPets } from '../../Components/componentPets';
 import{InsertCategory,SelectCategory,UpdateCategory,DeleteCategory} from '../../Components/componentCategory'
 import {InserProducts,SelectProducts,UpdateProducts,DeleteProducts} from '../../Components/componentProducts'

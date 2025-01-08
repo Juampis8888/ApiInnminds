@@ -6,6 +6,7 @@ const cors_API = (_app:any) => {
         'http://localhost:3001',
         'http://localhost:3005',
         'https://master.d161vines32rcl.amplifyapp.com/',
+        '*',
         undefined
     ];
     console.log("Cors")
