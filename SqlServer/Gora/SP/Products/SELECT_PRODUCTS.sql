@@ -5,14 +5,15 @@ AS
 BEGIN
 
     SELECT 
-        PRODUCTS_ID,
-        PRODUCTS_NAME,
-        PRODUCTS_DESCRIPTION,
-        PRODUCTS_WORTH,
-        PRODUCTS_STOCK,
+        PRODUCTS_ID id,
+        PRODUCTS_NAME title,
+        PRODUCTS_DESCRIPTION longDescription,
+        PRODUCTS_WORTH cost,
+        PRODUCTS_STOCK unity,
         PRODUCTS_ENABLE,
         CATEGORY_ID,
         PRODUCTS_USER,
+        PRODUCT_IMAGE,
         PRODUCTS_LAST_USER,
         PRODUCTS_DATE,
         PRODUCTS_LAST_DATE
