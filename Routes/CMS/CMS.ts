@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { createrToken } from '../../Middleware/token';
+import { createrToken } from '../../middleware/token';
 import { selectPets, deletePets, UpdatePets, insertPets } from '../../Components/componentPets';
-import{InsertCategory,SelectCategory,UpdateCategory,DeleteCategory} from '../../Components/componentCategory'
+import {InsertCategory,SelectCategory,UpdateCategory,DeleteCategory} from '../../Components/componentCategory'
 import {InserProducts,SelectProducts,UpdateProducts,DeleteProducts} from '../../Components/componentProducts'
 import {CreateImages_products,SelectImages_products,UpdateImages_products,DeleteImages_products} from '../../Components/componentImages_products'
 
@@ -44,10 +44,10 @@ class CMSRoute {
         /*
         *Rutas de los productos
         */
-        this.router.get('/Produts',SelectProducts)
-        this.router.post('/Produts',InserProducts)
-        this.router.patch('/Produts',UpdateProducts)
-        this.router.delete('/Produts',DeleteProducts)
+        this.router.get('/Products',SelectProducts)
+        this.router.post('/Products',InserProducts)
+        this.router.patch('/Products',UpdateProducts)
+        this.router.delete('/Products',DeleteProducts)
 
                 /*
         *Rutas de los imagenes

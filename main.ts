@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Api from './Routes/Api';
 import cors_API from './cors/cors_Api' 
-import config from './Config/config';
+import config from './config/config';
 
 class Server {
     

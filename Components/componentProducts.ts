@@ -1,6 +1,6 @@
 import {sqlConnection}  from '../Sqlconnection/sqlconection'
 import {  Request, Response } from 'express';
-import sql from 'mssql'
+import sql, { MAX } from 'mssql'
 
 export async function InserProducts(req: Request, res: Response): Promise<void> {
     let pool: sql.ConnectionPool | null = null;
@@ -16,8 +16,9 @@ export async function InserProducts(req: Request, res: Response): Promise<void> 
             .input('CATEGORY_ID', sql.Int, req.body.data.CATEGORY_ID)
             .input('PRODUCTS_USER', sql.NVarChar(100), req.body.data.PRODUCTS_USER)
             .input('PRODUCTS_LAST_USER', sql.NVarChar(100), req.body.data.PRODUCTS_LAST_USER)
-            .input('PRODUCTS_DATE', sql.DateTime, new Date())
-            .input('PRODUCTS_LAST_DATE', sql.DateTime, new Date())
+            .input('PRODUCT_IMAGE', sql.NVarChar(MAX), req.body.data.PRODUCT_IMAGE)
+            // .input('PRODUCTS_DATE', sql.DateTime, new Date())
+            // .input('PRODUCTS_LAST_DATE', sql.DateTime, new Date())
             .execute('INSERT_PRODUCTS');
         pool.close();
         res.status(200).json({ result: Create, message: 'Creación con éxito.' });
@@ -33,7 +34,11 @@ export async function SelectProducts(req:Request, res:Response):Promise<void>{
         console.log(req.query)
         pool = await sqlConnection()
         const Select = await pool.request()
+        .input('PRODUCTS_ID',sql.Int,req.query.PRODUCTS_ID)
         .input('PRODUCTS_NAME',sql.NVarChar(100),req.query.PRODUCTS_NAME)
+        .input('PRODUCTS_ENABLE',sql.Bit,req.query.PRODUCTS_ENABLE)
+        .input('CATEGORY_ID',sql.Int,req.query.CATEGORY_ID)
+
         .execute('SELECT_PRODUCTS')
         pool.close()
         console.log(Select)
@@ -53,12 +58,12 @@ export async function UpdateProducts(req: Request, res: Response): Promise<void>
         const Update = await pool.request()
             .input('PRODUCTS_ID', sql.Int, req.body.data.PRODUCTS_ID) 
             .input('PRODUCTS_NAME', sql.NVarChar(100), req.body.data.PRODUCTS_NAME)
-            .input('PRODUCTS_DESCRIPTION', sql.NVarChar(150), req.body.data.PRODUCTS_DESCRIPTION)
+            //.input('PRODUCTS_DESCRIPTION', sql.NVarChar(150), req.body.data.PRODUCTS_DESCRIPTION)
             .input('PRODUCTS_WORTH', sql.Float, req.body.data.PRODUCTS_WORTH)
             .input('PRODUCTS_STOCK', sql.Int, req.body.data.PRODUCTS_STOCK)
             .input('PRODUCTS_ENABLE', sql.Bit, req.body.data.PRODUCTS_ENABLE)
             .input('CATEGORY_ID', sql.Int, req.body.data.CATEGORY_ID)
-            .input('PRODUCTS_USER', sql.NVarChar(100), req.body.data.PRODUCTS_USER)
+            //.input('PRODUCTS_USER', sql.NVarChar(100), req.body.data.PRODUCTS_USER)
             .input('PRODUCTS_LAST_USER', sql.NVarChar(100), req.body.data.PRODUCTS_LAST_USER)
             .execute('UPDATE_PRODUCTS'); 
         pool.close();
